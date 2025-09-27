@@ -1,0 +1,1206 @@
+{
+	"compiler": {
+		"version": "0.8.30+commit.73712a01"
+	},
+	"language": "Solidity",
+	"output": {
+		"abi": [
+			{
+				"inputs": [],
+				"stateMutability": "nonpayable",
+				"type": "constructor"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "address",
+						"name": "owner",
+						"type": "address"
+					}
+				],
+				"name": "OwnableInvalidOwner",
+				"type": "error"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "address",
+						"name": "account",
+						"type": "address"
+					}
+				],
+				"name": "OwnableUnauthorizedAccount",
+				"type": "error"
+			},
+			{
+				"anonymous": false,
+				"inputs": [
+					{
+						"indexed": true,
+						"internalType": "address",
+						"name": "provider",
+						"type": "address"
+					},
+					{
+						"indexed": false,
+						"internalType": "bool",
+						"name": "authorized",
+						"type": "bool"
+					}
+				],
+				"name": "AuthorizedProviderUpdated",
+				"type": "event"
+			},
+			{
+				"anonymous": false,
+				"inputs": [
+					{
+						"indexed": false,
+						"internalType": "uint256",
+						"name": "blockNumber",
+						"type": "uint256"
+					},
+					{
+						"indexed": false,
+						"internalType": "bytes32",
+						"name": "blockHash",
+						"type": "bytes32"
+					}
+				],
+				"name": "BlockHashStored",
+				"type": "event"
+			},
+			{
+				"anonymous": false,
+				"inputs": [
+					{
+						"indexed": true,
+						"internalType": "uint64",
+						"name": "sequenceNumber",
+						"type": "uint64"
+					},
+					{
+						"indexed": true,
+						"internalType": "address",
+						"name": "revealer",
+						"type": "address"
+					},
+					{
+						"indexed": false,
+						"internalType": "bytes32",
+						"name": "commitment",
+						"type": "bytes32"
+					}
+				],
+				"name": "CommitSubmitted",
+				"type": "event"
+			},
+			{
+				"anonymous": false,
+				"inputs": [
+					{
+						"indexed": true,
+						"internalType": "address",
+						"name": "previousOwner",
+						"type": "address"
+					},
+					{
+						"indexed": true,
+						"internalType": "address",
+						"name": "newOwner",
+						"type": "address"
+					}
+				],
+				"name": "OwnershipTransferred",
+				"type": "event"
+			},
+			{
+				"anonymous": false,
+				"inputs": [
+					{
+						"indexed": false,
+						"internalType": "address",
+						"name": "account",
+						"type": "address"
+					}
+				],
+				"name": "Paused",
+				"type": "event"
+			},
+			{
+				"anonymous": false,
+				"inputs": [
+					{
+						"indexed": false,
+						"internalType": "uint256",
+						"name": "randomNumber",
+						"type": "uint256"
+					},
+					{
+						"indexed": true,
+						"internalType": "uint64",
+						"name": "sequenceNumber",
+						"type": "uint64"
+					},
+					{
+						"indexed": false,
+						"internalType": "string",
+						"name": "method",
+						"type": "string"
+					}
+				],
+				"name": "RandomNumberGenerated",
+				"type": "event"
+			},
+			{
+				"anonymous": false,
+				"inputs": [
+					{
+						"indexed": true,
+						"internalType": "uint64",
+						"name": "sequenceNumber",
+						"type": "uint64"
+					},
+					{
+						"indexed": false,
+						"internalType": "enum CitreaLotteryEngine.RequestType",
+						"name": "requestType",
+						"type": "uint8"
+					},
+					{
+						"indexed": false,
+						"internalType": "bool",
+						"name": "useCommitReveal",
+						"type": "bool"
+					}
+				],
+				"name": "RandomRequested",
+				"type": "event"
+			},
+			{
+				"anonymous": false,
+				"inputs": [
+					{
+						"indexed": true,
+						"internalType": "address",
+						"name": "winner",
+						"type": "address"
+					},
+					{
+						"indexed": false,
+						"internalType": "uint256",
+						"name": "randomSeed",
+						"type": "uint256"
+					},
+					{
+						"indexed": true,
+						"internalType": "uint64",
+						"name": "sequenceNumber",
+						"type": "uint64"
+					},
+					{
+						"indexed": false,
+						"internalType": "string",
+						"name": "method",
+						"type": "string"
+					}
+				],
+				"name": "RandomWinnerSelected",
+				"type": "event"
+			},
+			{
+				"anonymous": false,
+				"inputs": [
+					{
+						"indexed": false,
+						"internalType": "bool",
+						"name": "blockHash",
+						"type": "bool"
+					},
+					{
+						"indexed": false,
+						"internalType": "bool",
+						"name": "commitReveal",
+						"type": "bool"
+					}
+				],
+				"name": "RandomnessMethodUpdated",
+				"type": "event"
+			},
+			{
+				"anonymous": false,
+				"inputs": [
+					{
+						"indexed": true,
+						"internalType": "uint64",
+						"name": "sequenceNumber",
+						"type": "uint64"
+					},
+					{
+						"indexed": true,
+						"internalType": "address",
+						"name": "revealer",
+						"type": "address"
+					},
+					{
+						"indexed": false,
+						"internalType": "uint256",
+						"name": "revealValue",
+						"type": "uint256"
+					}
+				],
+				"name": "RevealSubmitted",
+				"type": "event"
+			},
+			{
+				"anonymous": false,
+				"inputs": [
+					{
+						"indexed": false,
+						"internalType": "address",
+						"name": "account",
+						"type": "address"
+					}
+				],
+				"name": "Unpaused",
+				"type": "event"
+			},
+			{
+				"stateMutability": "payable",
+				"type": "fallback"
+			},
+			{
+				"inputs": [],
+				"name": "MAX_PARTICIPANTS",
+				"outputs": [
+					{
+						"internalType": "uint256",
+						"name": "",
+						"type": "uint256"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [],
+				"name": "MAX_REVEAL_DELAY",
+				"outputs": [
+					{
+						"internalType": "uint256",
+						"name": "",
+						"type": "uint256"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [],
+				"name": "MIN_REVEAL_DELAY",
+				"outputs": [
+					{
+						"internalType": "uint256",
+						"name": "",
+						"type": "uint256"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "address",
+						"name": "",
+						"type": "address"
+					}
+				],
+				"name": "authorizedProviders",
+				"outputs": [
+					{
+						"internalType": "bool",
+						"name": "",
+						"type": "bool"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [],
+				"name": "commitRevealDelay",
+				"outputs": [
+					{
+						"internalType": "uint256",
+						"name": "",
+						"type": "uint256"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "address",
+						"name": "",
+						"type": "address"
+					},
+					{
+						"internalType": "uint64",
+						"name": "",
+						"type": "uint64"
+					}
+				],
+				"name": "commitReveals",
+				"outputs": [
+					{
+						"internalType": "bytes32",
+						"name": "commitment",
+						"type": "bytes32"
+					},
+					{
+						"internalType": "uint256",
+						"name": "revealValue",
+						"type": "uint256"
+					},
+					{
+						"internalType": "bool",
+						"name": "revealed",
+						"type": "bool"
+					},
+					{
+						"internalType": "uint256",
+						"name": "commitBlock",
+						"type": "uint256"
+					},
+					{
+						"internalType": "uint256",
+						"name": "revealDeadline",
+						"type": "uint256"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [],
+				"name": "emergencyPause",
+				"outputs": [],
+				"stateMutability": "nonpayable",
+				"type": "function"
+			},
+			{
+				"inputs": [],
+				"name": "emergencyUnpause",
+				"outputs": [],
+				"stateMutability": "nonpayable",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "address",
+						"name": "revealer",
+						"type": "address"
+					},
+					{
+						"internalType": "uint64",
+						"name": "sequenceNum",
+						"type": "uint64"
+					}
+				],
+				"name": "getCommitReveal",
+				"outputs": [
+					{
+						"components": [
+							{
+								"internalType": "bytes32",
+								"name": "commitment",
+								"type": "bytes32"
+							},
+							{
+								"internalType": "uint256",
+								"name": "revealValue",
+								"type": "uint256"
+							},
+							{
+								"internalType": "bool",
+								"name": "revealed",
+								"type": "bool"
+							},
+							{
+								"internalType": "uint256",
+								"name": "commitBlock",
+								"type": "uint256"
+							},
+							{
+								"internalType": "uint256",
+								"name": "revealDeadline",
+								"type": "uint256"
+							}
+						],
+						"internalType": "struct CitreaLotteryEngine.CommitReveal",
+						"name": "",
+						"type": "tuple"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "uint256",
+						"name": "min",
+						"type": "uint256"
+					},
+					{
+						"internalType": "uint256",
+						"name": "max",
+						"type": "uint256"
+					}
+				],
+				"name": "getRandomNumber",
+				"outputs": [
+					{
+						"internalType": "uint64",
+						"name": "",
+						"type": "uint64"
+					}
+				],
+				"stateMutability": "nonpayable",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "uint256",
+						"name": "min",
+						"type": "uint256"
+					},
+					{
+						"internalType": "uint256",
+						"name": "max",
+						"type": "uint256"
+					},
+					{
+						"internalType": "bool",
+						"name": "useCommitReveal",
+						"type": "bool"
+					}
+				],
+				"name": "getRandomNumber",
+				"outputs": [
+					{
+						"internalType": "uint64",
+						"name": "sequenceNum",
+						"type": "uint64"
+					}
+				],
+				"stateMutability": "nonpayable",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "uint64",
+						"name": "sequenceNum",
+						"type": "uint64"
+					}
+				],
+				"name": "getRequest",
+				"outputs": [
+					{
+						"components": [
+							{
+								"internalType": "enum CitreaLotteryEngine.RequestType",
+								"name": "requestType",
+								"type": "uint8"
+							},
+							{
+								"internalType": "address[]",
+								"name": "participants",
+								"type": "address[]"
+							},
+							{
+								"internalType": "uint256",
+								"name": "min",
+								"type": "uint256"
+							},
+							{
+								"internalType": "uint256",
+								"name": "max",
+								"type": "uint256"
+							},
+							{
+								"internalType": "address",
+								"name": "requester",
+								"type": "address"
+							},
+							{
+								"internalType": "bool",
+								"name": "fulfilled",
+								"type": "bool"
+							},
+							{
+								"internalType": "uint256",
+								"name": "requestBlock",
+								"type": "uint256"
+							},
+							{
+								"internalType": "uint256",
+								"name": "timestamp",
+								"type": "uint256"
+							},
+							{
+								"internalType": "bytes32",
+								"name": "commitHash",
+								"type": "bytes32"
+							},
+							{
+								"internalType": "uint256",
+								"name": "revealDeadline",
+								"type": "uint256"
+							},
+							{
+								"internalType": "bool",
+								"name": "isCommitReveal",
+								"type": "bool"
+							}
+						],
+						"internalType": "struct CitreaLotteryEngine.RandomRequest",
+						"name": "",
+						"type": "tuple"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "uint64",
+						"name": "sequenceNum",
+						"type": "uint64"
+					}
+				],
+				"name": "getRevealStats",
+				"outputs": [
+					{
+						"internalType": "uint256",
+						"name": "totalRevealers",
+						"type": "uint256"
+					},
+					{
+						"internalType": "uint256",
+						"name": "revealedCount",
+						"type": "uint256"
+					},
+					{
+						"internalType": "uint256",
+						"name": "pendingCount",
+						"type": "uint256"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "uint64",
+						"name": "sequenceNum",
+						"type": "uint64"
+					}
+				],
+				"name": "getRevealersForRequest",
+				"outputs": [
+					{
+						"internalType": "address[]",
+						"name": "",
+						"type": "address[]"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "uint256",
+						"name": "",
+						"type": "uint256"
+					}
+				],
+				"name": "historicalBlockHashes",
+				"outputs": [
+					{
+						"internalType": "bytes32",
+						"name": "",
+						"type": "bytes32"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "uint64",
+						"name": "sequenceNum",
+						"type": "uint64"
+					}
+				],
+				"name": "isRequestFulfilled",
+				"outputs": [
+					{
+						"internalType": "bool",
+						"name": "",
+						"type": "bool"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [],
+				"name": "lastStoredBlock",
+				"outputs": [
+					{
+						"internalType": "uint256",
+						"name": "",
+						"type": "uint256"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "uint64",
+						"name": "sequenceNum",
+						"type": "uint64"
+					},
+					{
+						"internalType": "string",
+						"name": "reason",
+						"type": "string"
+					}
+				],
+				"name": "manualResolveRequest",
+				"outputs": [],
+				"stateMutability": "nonpayable",
+				"type": "function"
+			},
+			{
+				"inputs": [],
+				"name": "owner",
+				"outputs": [
+					{
+						"internalType": "address",
+						"name": "",
+						"type": "address"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [],
+				"name": "paused",
+				"outputs": [
+					{
+						"internalType": "bool",
+						"name": "",
+						"type": "bool"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "uint64",
+						"name": "",
+						"type": "uint64"
+					}
+				],
+				"name": "pendingRequests",
+				"outputs": [
+					{
+						"internalType": "enum CitreaLotteryEngine.RequestType",
+						"name": "requestType",
+						"type": "uint8"
+					},
+					{
+						"internalType": "uint256",
+						"name": "min",
+						"type": "uint256"
+					},
+					{
+						"internalType": "uint256",
+						"name": "max",
+						"type": "uint256"
+					},
+					{
+						"internalType": "address",
+						"name": "requester",
+						"type": "address"
+					},
+					{
+						"internalType": "bool",
+						"name": "fulfilled",
+						"type": "bool"
+					},
+					{
+						"internalType": "uint256",
+						"name": "requestBlock",
+						"type": "uint256"
+					},
+					{
+						"internalType": "uint256",
+						"name": "timestamp",
+						"type": "uint256"
+					},
+					{
+						"internalType": "bytes32",
+						"name": "commitHash",
+						"type": "bytes32"
+					},
+					{
+						"internalType": "uint256",
+						"name": "revealDeadline",
+						"type": "uint256"
+					},
+					{
+						"internalType": "bool",
+						"name": "isCommitReveal",
+						"type": "bool"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "address[]",
+						"name": "participants",
+						"type": "address[]"
+					}
+				],
+				"name": "previewRandomWinner",
+				"outputs": [
+					{
+						"internalType": "address",
+						"name": "",
+						"type": "address"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [],
+				"name": "renounceOwnership",
+				"outputs": [],
+				"stateMutability": "nonpayable",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "uint64",
+						"name": "",
+						"type": "uint64"
+					},
+					{
+						"internalType": "uint256",
+						"name": "",
+						"type": "uint256"
+					}
+				],
+				"name": "requestRevealers",
+				"outputs": [
+					{
+						"internalType": "address",
+						"name": "",
+						"type": "address"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "uint64",
+						"name": "sequenceNum",
+						"type": "uint64"
+					},
+					{
+						"internalType": "uint256",
+						"name": "secret",
+						"type": "uint256"
+					},
+					{
+						"internalType": "uint256",
+						"name": "salt",
+						"type": "uint256"
+					}
+				],
+				"name": "revealCommitment",
+				"outputs": [],
+				"stateMutability": "nonpayable",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "address[]",
+						"name": "participants",
+						"type": "address[]"
+					},
+					{
+						"internalType": "bool",
+						"name": "useCommitReveal",
+						"type": "bool"
+					}
+				],
+				"name": "selectRandomWinner",
+				"outputs": [
+					{
+						"internalType": "uint64",
+						"name": "sequenceNum",
+						"type": "uint64"
+					}
+				],
+				"stateMutability": "nonpayable",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "address[]",
+						"name": "participants",
+						"type": "address[]"
+					}
+				],
+				"name": "selectRandomWinner",
+				"outputs": [
+					{
+						"internalType": "uint64",
+						"name": "",
+						"type": "uint64"
+					}
+				],
+				"stateMutability": "nonpayable",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "address",
+						"name": "provider",
+						"type": "address"
+					},
+					{
+						"internalType": "bool",
+						"name": "authorized",
+						"type": "bool"
+					}
+				],
+				"name": "setAuthorizedProvider",
+				"outputs": [],
+				"stateMutability": "nonpayable",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "uint256",
+						"name": "_delay",
+						"type": "uint256"
+					}
+				],
+				"name": "setCommitRevealDelay",
+				"outputs": [],
+				"stateMutability": "nonpayable",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "bool",
+						"name": "_useBlockHash",
+						"type": "bool"
+					},
+					{
+						"internalType": "bool",
+						"name": "_useCommitReveal",
+						"type": "bool"
+					}
+				],
+				"name": "setRandomnessMethod",
+				"outputs": [],
+				"stateMutability": "nonpayable",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "uint256",
+						"name": "blockNumber",
+						"type": "uint256"
+					}
+				],
+				"name": "storeBlockHash",
+				"outputs": [],
+				"stateMutability": "nonpayable",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "uint64",
+						"name": "sequenceNum",
+						"type": "uint64"
+					},
+					{
+						"internalType": "bytes32",
+						"name": "commitment",
+						"type": "bytes32"
+					}
+				],
+				"name": "submitCommitment",
+				"outputs": [],
+				"stateMutability": "nonpayable",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "address",
+						"name": "newOwner",
+						"type": "address"
+					}
+				],
+				"name": "transferOwnership",
+				"outputs": [],
+				"stateMutability": "nonpayable",
+				"type": "function"
+			},
+			{
+				"inputs": [],
+				"name": "useBlockHashRandomness",
+				"outputs": [
+					{
+						"internalType": "bool",
+						"name": "",
+						"type": "bool"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [],
+				"name": "useCommitRevealScheme",
+				"outputs": [
+					{
+						"internalType": "bool",
+						"name": "",
+						"type": "bool"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "address",
+						"name": "to",
+						"type": "address"
+					},
+					{
+						"internalType": "uint256",
+						"name": "amount",
+						"type": "uint256"
+					}
+				],
+				"name": "withdraw",
+				"outputs": [],
+				"stateMutability": "nonpayable",
+				"type": "function"
+			},
+			{
+				"stateMutability": "payable",
+				"type": "receive"
+			}
+		],
+		"devdoc": {
+			"details": "Provides secure random winner selection using Bitcoin block hashes and commit-reveal schemes",
+			"errors": {
+				"OwnableInvalidOwner(address)": [
+					{
+						"details": "The owner is not a valid owner account. (eg. `address(0)`)"
+					}
+				],
+				"OwnableUnauthorizedAccount(address)": [
+					{
+						"details": "The caller account is not authorized to perform an operation."
+					}
+				]
+			},
+			"events": {
+				"Paused(address)": {
+					"details": "Emitted when the pause is triggered by `account`."
+				},
+				"Unpaused(address)": {
+					"details": "Emitted when the pause is lifted by `account`."
+				}
+			},
+			"kind": "dev",
+			"methods": {
+				"getRandomNumber(uint256,uint256,bool)": {
+					"params": {
+						"max": "Maximum value (exclusive)",
+						"min": "Minimum value (inclusive)",
+						"useCommitReveal": "Whether to use commit-reveal scheme"
+					},
+					"returns": {
+						"sequenceNum": "The sequence number for tracking this request"
+					}
+				},
+				"owner()": {
+					"details": "Returns the address of the current owner."
+				},
+				"paused()": {
+					"details": "Returns true if the contract is paused, and false otherwise."
+				},
+				"renounceOwnership()": {
+					"details": "Leaves the contract without owner. It will not be possible to call `onlyOwner` functions. Can only be called by the current owner. NOTE: Renouncing ownership will leave the contract without an owner, thereby disabling any functionality that is only available to the owner."
+				},
+				"revealCommitment(uint64,uint256,uint256)": {
+					"params": {
+						"salt": "Additional salt used in commitment",
+						"secret": "The secret value used in commitment",
+						"sequenceNum": "The sequence number of the request"
+					}
+				},
+				"selectRandomWinner(address[],bool)": {
+					"params": {
+						"participants": "Array of participant addresses",
+						"useCommitReveal": "Whether to use commit-reveal scheme for this request"
+					},
+					"returns": {
+						"sequenceNum": "The sequence number for tracking this request"
+					}
+				},
+				"submitCommitment(uint64,bytes32)": {
+					"params": {
+						"commitment": "Keccak256 hash of (secret + salt)",
+						"sequenceNum": "The sequence number of the request"
+					}
+				},
+				"transferOwnership(address)": {
+					"details": "Transfers ownership of the contract to a new account (`newOwner`). Can only be called by the current owner."
+				}
+			},
+			"title": "CitreaLotteryEngine",
+			"version": 1
+		},
+		"userdoc": {
+			"kind": "user",
+			"methods": {
+				"getRandomNumber(uint256,uint256)": {
+					"notice": "Overloaded function for backward compatibility"
+				},
+				"getRandomNumber(uint256,uint256,bool)": {
+					"notice": "Generate a random number within a range"
+				},
+				"manualResolveRequest(uint64,string)": {
+					"notice": "Manually resolve a request (owner only, for emergencies)"
+				},
+				"revealCommitment(uint64,uint256,uint256)": {
+					"notice": "Reveal the committed value"
+				},
+				"selectRandomWinner(address[])": {
+					"notice": "Overloaded function for backward compatibility (defaults to block hash method)"
+				},
+				"selectRandomWinner(address[],bool)": {
+					"notice": "Select a random winner from participants using multiple randomness sources"
+				},
+				"submitCommitment(uint64,bytes32)": {
+					"notice": "Submit commitment for randomness generation"
+				}
+			},
+			"notice": "Enhanced lottery engine for ChainPot on Citrea with multiple randomness sources",
+			"version": 1
+		}
+	},
+	"settings": {
+		"compilationTarget": {
+			"LotteryEngine.sol": "CitreaLotteryEngine"
+		},
+		"evmVersion": "prague",
+		"libraries": {},
+		"metadata": {
+			"bytecodeHash": "ipfs"
+		},
+		"optimizer": {
+			"enabled": true,
+			"runs": 200
+		},
+		"remappings": [],
+		"viaIR": true
+	},
+	"sources": {
+		"@openzeppelin/contracts/access/Ownable.sol": {
+			"keccak256": "0xff6d0bb2e285473e5311d9d3caacb525ae3538a80758c10649a4d61029b017bb",
+			"license": "MIT",
+			"urls": [
+				"bzz-raw://8ed324d3920bb545059d66ab97d43e43ee85fd3bd52e03e401f020afb0b120f6",
+				"dweb:/ipfs/QmfEckWLmZkDDcoWrkEvMWhms66xwTLff9DDhegYpvHo1a"
+			]
+		},
+		"@openzeppelin/contracts/security/Pausable.sol": {
+			"keccak256": "0x0849d93b16c9940beb286a7864ed02724b248b93e0d80ef6355af5ef15c64773",
+			"license": "MIT",
+			"urls": [
+				"bzz-raw://4ddabb16009cd17eaca3143feadf450ac13e72919ebe2ca50e00f61cb78bc004",
+				"dweb:/ipfs/QmSPwPxX7d6TTWakN5jy5wsaGkS1y9TW8fuhGSraMkLk2B"
+			]
+		},
+		"@openzeppelin/contracts/security/ReentrancyGuard.sol": {
+			"keccak256": "0xa535a5df777d44e945dd24aa43a11e44b024140fc340ad0dfe42acf4002aade1",
+			"license": "MIT",
+			"urls": [
+				"bzz-raw://41319e7f621f2dc3733511332c4fd032f8e32ad2aa7fd6f665c19741d9941a34",
+				"dweb:/ipfs/QmcYR3bd862GD1Bc7jwrU9bGxrhUu5na1oP964bDCu2id1"
+			]
+		},
+		"@openzeppelin/contracts/utils/Context.sol": {
+			"keccak256": "0x493033a8d1b176a037b2cc6a04dad01a5c157722049bbecf632ca876224dd4b2",
+			"license": "MIT",
+			"urls": [
+				"bzz-raw://6a708e8a5bdb1011c2c381c9a5cfd8a9a956d7d0a9dc1bd8bcdaf52f76ef2f12",
+				"dweb:/ipfs/Qmax9WHBnVsZP46ZxEMNRQpLQnrdE4dK8LehML1Py8FowF"
+			]
+		},
+		"LotteryEngine.sol": {
+			"keccak256": "0xe6d9be2267455f193570c011b20806c547ac4e4136bdde5bee946e3268abc0c3",
+			"license": "MIT",
+			"urls": [
+				"bzz-raw://eae20355828192659218e7649e4de523791d14f18a9c980aea59d0e65e68cb0f",
+				"dweb:/ipfs/QmZExqqpXkFXYKKKMePxgRyjdD8oZQbKwqrtQimHq2N73T"
+			]
+		}
+	},
+	"version": 1
+}
